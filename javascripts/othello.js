@@ -604,7 +604,17 @@ function start(){
     p2ms.disabled = false;
   }
 }
+p1options = $.map(p1modes,function(m,i){
+  $options = $('<option>', { html: m, val:i});
+  return $options;
+});
+p2options = $.map(p2modes,function(m,i){
+  $options = $('<option>', { html: m, val:i});
+  return $options;
+});
 
+$('#p1mode_select').append(p1options);
+$('#p2mode_select').append(p2options);
 $('#p1mode_select').change(function(){
   p1mode = $(this).val();
   p1mode_msg = p1modes[p1mode];
@@ -619,4 +629,4 @@ $('#p2mode_select').change(function(){
     mode_msg = `${p1mode_msg} vs ${p2mode_msg}`;
   }
 })
-window.onload = initBoard;
+initBoard();
